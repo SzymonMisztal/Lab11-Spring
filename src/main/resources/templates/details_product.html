@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="_layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Details</title>
+</head>
+<div layout:fragment="content">
+    <h3><span th:text="${product.getName()}"></h3>
+    <p>ID: <span th:text="${product.getId()}"></span></p>
+    <p>Name: <span th:text="${product.getName()}"></span></p>
+    <p>Weight: <span th:text="${product.getWeight()}"></span></p>
+    <p>Price: <span th:text="${product.getPrice()}"></span></p>
+    <p>Category: <span th:text="${product.getCategory().getName()}"></span></p>
+</div>
+</html>`

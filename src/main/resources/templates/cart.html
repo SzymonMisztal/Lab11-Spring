@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="_layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+</head>
+<div layout:fragment="content">
+    <h2>Products</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="cartProduct : ${cart.getProducts()}">
+            <td th:text="${cartProduct.getProduct().getId()}"></td>
+            <td th:text="${cartProduct.getProduct().getName()}"></td>
+            <td th:text="${cartProduct.getQuantity()}"></td>
+            <td>
+                <a class="btn btn-primary" th:href="@{/user/cart/remove/{productId}(productId=${cartProduct.getProduct().getId()})}">Remove</a>
+                <a class="btn btn-primary" th:href="@{/user/cart/add/{productId}(productId=${cartProduct.getProduct().getId()})}">Increase</a>
+                <a class="btn btn-primary" th:href="@{/user/cart/decrease/{productId}(productId=${cartProduct.getProduct().getId()})}">Decrease</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <br>
+    <p><b>PRICE: </b><span th:text = ${price}/></p>
+</div>
+
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="_layout">
+<head>
+    <meta charset="text/html; UTF-8">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Edit category</title>
+</head>
+
+<div layout:fragment="content">
+    <h1>Edit category</h1>
+    <form action="#" th:action="@{/admin/categories/edit}" th:object="${category}" method="post">
+        <p>Id: <input type="text" th:field="*{id}" required readonly/></p>
+        <p>Name: <input type="text" th:field="*{name}" required/></p>
+        <p>Code: <input type="text" th:field="*{code}" required/></p>
+        <p><input type="submit" value="Edit"/> <input type="reset" value="Reset"/></p>
+    </form>
+</div>
+
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+</head>
+<header th:fragment="myheader">
+    <nav sec:authorize="hasAuthority('ADMIN')">
+        <a th:href="@{/admin/categories}">Categories</a>
+        <a th:href="@{/admin/products}">Products</a>
+    </nav>
+    <nav sec:authorize="hasAuthority('USER')">
+        <a th:href="@{/user/products}">Products</a>
+        <a th:href="@{/user/cart}">Card</a>
+    </nav>
+</header>
+
+</html>

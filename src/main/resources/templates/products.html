@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="_layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+</head>
+<div layout:fragment="content">
+    <h2>Products</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Weight</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th colspan="2">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product : ${products}">
+            <td th:text="${product.getId()}"></td>
+            <td th:text="${product.getName()}"></td>
+            <td th:text="${product.getWeight()}"></td>
+            <td th:text="${product.getPrice()}"></td>
+            <td><a th:href="@{/admin/categories/{categoryId}(categoryId=${product.getCategory().getId()})}"><span
+                    th:text="${product.getCategory().getName()}"></span></a></td>
+            <td>
+                <a class="btn btn-primary"
+                   th:href="@{/admin/products/edit/{productId}(productId=${product.getId()})}">Edit</a>
+                <a class="btn btn-primary" th:href="@{/admin/products/remove/{productId}(productId=${product.getId()})}">Remove</a>
+                <a class="btn btn-primary" th:href="@{/admin/products/{productId}(productId=${product.getId()})}">Details</a>
+
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/admin/products/add}">Add product</a>
+</div>
+
+</html>
